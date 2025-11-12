@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excel Form</title>
+</head>
+<body>
+    <h1>Uploads your Excel file</h1>
+    <form action="/upload-excel" method="post" enctype="multipart/form-data">
+        <label for="excel-file">Upload Excel File: </label>
+        <input type="file" name="excelFile" id="excel-file" accept=".xlsx, .xls" required>
+        <br><br>
+        <button type="submit">Upload</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,5 @@
+<!-- post-container -->
+<div class="post-container">
+    <h2 class="page-heading">Author: <%= news.length > 0 ? news[0].author.fullname : 'Unknown' %></h2>
+    <%- include('partials/loop') %>
+</div>
