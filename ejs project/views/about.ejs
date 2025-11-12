@@ -1,0 +1,19 @@
+<%- include('header') %>
+<!-- iska ka matlab hai iske aage ka code header ke file me hai   -->
+        <div class="row">
+            <div class="col">
+                <form action="/submit" method="POST">
+                    <!-- route and post method are declared -->
+                    Enter Name:<input type="text" name="myname">
+                    <br><br>
+                    <input type="submit" >
+                </form>
+            </div>
+        </div>
+        <div class="row mt-3 my-3" >
+            <div class="col bg-danger">
+                <%=message %>
+            </div>
+        </div>
+        <%- include('footer') %>
+    <!-- iska se aage ka code footer wala file me hai -->
