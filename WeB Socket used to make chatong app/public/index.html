@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Chatting App</h1>
+
+    <ul id="messages"></ul>
+    <form id="my-form" action="">
+        <label for="input">Message:</label>
+        <input type="text" id="input" autocomplete="off"/>
+        <button id="sendbtn" type="submit">Send</button>
+    <button id="toggle-btn" type="button">Disconnect</button>
+
+    </form>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+
+        const socket = io();
+
+        const btn = document.querySelector('#sendbtn');
+        const input = document.querySelector('#input');
+        const toggleButton = document.querySelector('#toggle-btn');
+        const form = document.querySelector('#my-form');
+        const messages = document.querySelector('#messages');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (input.value.trim()) {
+                socket.emit('message', input.value.trim());
+                input.value = '';
+            }
+        });
+
+        socket.on('message', (msg) => {
+            const li = document.createElement('li');
+            li.textContent = msg;
+            messages.appendChild(li);
+            window.scrollTo(0, document.body.scrollHeight);
+        });
+
+        toggleButton.onclick = (e) =>{
+            e.preventDefault();
+            if (socket.connected) {
+                socket.disconnect();
+                toggleButton.textContent = "Connect";
+            } else {
+                socket.connect();
+                toggleButton.textContent = "Disconnect";
+            }
+        };
+
+    </script>
+</body>
+</html>

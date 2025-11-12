@@ -1,0 +1,5 @@
+- [x] Fix parameter order in app.get('/') from (res, req) to (req, res)
+- [x] Fix usage of user object in /profile route from res.user to req.user
+- [x] Fix logout route to use req.logout instead of res.logout and handle the callback properly
+- [x] Verify other routes for similar issues
+- [x] Fix passport serialize/deserialize to store full user profile instead of just id, so req.user.displayName works
